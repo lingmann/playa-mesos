@@ -80,7 +80,7 @@
       "type": "shell"
     },
     {
-      "execute_command": "echo 'vagrant'|{{.Vars}} sudo -S -E bash '{{.Path}}' --slave-hostname {{user `ip_address`}}",
+      "execute_command": "echo 'vagrant'|{{.Vars}} sudo -S -E bash '{{.Path}}' --slave-hostname {{user `ip_address`}} --frameworks {{user `mesos_frameworks`}}",
       "scripts": [
         "{{user `scripts`}}/common/mesosflexinstall"
       ],
@@ -103,7 +103,8 @@
     "ip_address": null,
     "vm_ram": null,
     "vm_cpus": null,
-    "scripts": "../lib/scripts"
+    "scripts": "../lib/scripts",
+    "mesos_frameworks": null
   }
 }
 

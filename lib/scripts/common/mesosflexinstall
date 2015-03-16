@@ -4,6 +4,7 @@ function -h {
 cat <<USAGE
  USAGE: mesosflexinstall (--rel <mesos-version>)?
                          (--slave-hostname <SLAVE_HOSTNAME>)?
+                         (--frameworks <frameworks>)?
 
   Install and configure Mesos with Zookeeper support.
 
@@ -34,6 +35,7 @@ function options {
     case "$1" in
       --rel)            rel="$2"                 ; shift ;;
       --slave-hostname) slave_hostname="$2"      ; shift ;; # See: MESOS-825
+      --frameworks) frameworks="$2"  ; shift ;; # See: MESOS-825
       --*)              err "No such option: $1" ;;
     esac
     shift
@@ -66,9 +68,16 @@ function install_apt_source {
 function install_with_apt {
   apt_ curl unzip
   install_apt_source $1
-  apt_ zookeeperd zookeeper zookeeper-bin docker.io mesos marathon deimos
+  apt_ zookeeperd zookeeper zookeeper-bin docker.io mesos deimos
+  install_frameworks
   as_root ln -sf /usr/bin/docker.io /usr/local/bin/docker
   as_root sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
+}
+
+function install_frameworks {
+  if [[ ${frameworks+isset} ]]; then
+    apt_ ${frameworks}
+  fi
 }
 
 function apt_ {

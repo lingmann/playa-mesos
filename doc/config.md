@@ -21,3 +21,6 @@ MB of RAM allocated to the VM
 
 ###### _*vm_cpus*_
 Number of CPU cores allocated to the VM
+
+###### _*mesos_frameworks*_
+Mesos frameworks to be installed

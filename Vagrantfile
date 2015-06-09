@@ -23,6 +23,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # using a specific IP.
   config.vm.network :private_network, ip: pmconf.ip_address
 
+  # Forward the docker port
+  config.vm.network :forwarded_port, guest: 2376, host: 2376
+  config.vm.network :forwarded_port, guest: 8080, host: 48080
+  config.vm.network :forwarded_port, guest: 5050, host: 45050
+
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
   config.ssh.forward_agent = true
@@ -71,6 +76,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       # TODO: Set as array directly when Vagrant 1.3 support is dropped
       shell.args = arg_array.join(' ')
     end
+    config.vm.provision :shell, path: 'lib/scripts/ubuntu/docker'
   end
 
 end

@@ -76,7 +76,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       # TODO: Set as array directly when Vagrant 1.3 support is dropped
       shell.args = arg_array.join(' ')
     end
-    config.vm.provision :shell, path: 'lib/scripts/ubuntu/update-docker'
+    config.vm.provision :shell, path: 'lib/scripts/ubuntu/docker'
   end
 
 end

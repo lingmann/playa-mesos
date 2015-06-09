@@ -70,7 +70,7 @@ function install_with_apt {
   install_apt_source $1
   apt_ zookeeperd zookeeper zookeeper-bin docker.io mesos marathon deimos
   as_root ln -sf /usr/bin/docker.io /usr/local/bin/docker
-  as_root sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
+  as_root sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker
 }
 
 function apt_ {

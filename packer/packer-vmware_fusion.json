@@ -70,7 +70,7 @@
       "type": "shell"
     },
     {
-      "execute_command": "echo 'vagrant'|{{.Vars}} sudo -S -E bash '{{.Path}}' --slave-hostname {{user `ip_address`}}",
+      "execute_command": "echo 'vagrant'|{{.Vars}} sudo -S -E bash '{{.Path}}' --slave-hostname {{user `ip_address`}}  --slave-cpus {{user `slave_cpus`}} --slave-mem {{user `slave_mem`}}",
       "scripts": [
         "{{user `scripts`}}/common/mesosflexinstall"
       ],
@@ -93,6 +93,8 @@
     "ip_address": null,
     "vm_ram": null,
     "vm_cpus": null,
+    "slave_mem": null,
+    "slave_cpus": null,
     "scripts": "../lib/scripts"
   }
 }

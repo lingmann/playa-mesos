@@ -45,13 +45,13 @@
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "384"
+          "4096"
         ],
         [
           "modifyvm",
           "{{.Name}}",
           "--cpus",
-          "1"
+          "4"
         ]
       ],
       "virtualbox_version_file": ".vbox_version",
@@ -80,7 +80,7 @@
       "type": "shell"
     },
     {
-      "execute_command": "echo 'vagrant'|{{.Vars}} sudo -S -E bash '{{.Path}}' --slave-hostname {{user `ip_address`}}",
+      "execute_command": "echo 'vagrant'|{{.Vars}} sudo -S -E bash '{{.Path}}' --slave-hostname {{user `ip_address`}} --slave-cpus {{user `slave_cpus`}} --slave-mem {{user `slave_mem`}}",
       "scripts": [
         "{{user `scripts`}}/common/mesosflexinstall"
       ],
@@ -103,6 +103,8 @@
     "ip_address": null,
     "vm_ram": null,
     "vm_cpus": null,
+    "slave_cpus": null,
+    "slave_mem": null,
     "scripts": "../lib/scripts"
   }
 }

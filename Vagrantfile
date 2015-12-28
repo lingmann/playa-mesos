@@ -61,6 +61,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Make the project root available to the guest VM.
   # config.vm.synced_folder '.', '/vagrant'
+  config.vm.synced_folder '.', '/vagrant'
+  config.vm.synced_folder '~/vagrantResources/', '/published'
 
   # Only provision if explicitly request with 'provision' or 'up --provision'
   if ARGV.any? { |arg| arg =~ /^(--)?provision$/ }
@@ -73,6 +75,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       if pmconf.instance_variable_get(:@settings).include?('mesos_release')
         arg_array += ['--rel', pmconf.mesos_release]
       end
+
+      arg_array += ['--slave-cpus', pmconf.slave_cpus ]
+      arg_array += ['--slave-mem', pmconf.slave_mem ]
 
       # Using an array for shell args requires Vagrant 1.4.0+
       # TODO: Set as array directly when Vagrant 1.3 support is dropped

@@ -3,6 +3,9 @@
     "box_name": "playa_mesos_ubuntu_14.04_201601041324",
     "base_url": "http://downloads.mesosphere.io/playa-mesos",
     "ip_address": "10.141.141.10",
+    "mesos_release": "0.26.0-0.2.145.ubuntu1404",
     "vm_ram": "2048",
-    "vm_cpus": "2"
+    "vm_cpus": "2",
+    "slave_mem": "1800",
+    "slave_cpus": "2"
 }

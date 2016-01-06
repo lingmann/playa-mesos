@@ -45,13 +45,13 @@
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "4096"
+          "384"
         ],
         [
           "modifyvm",
           "{{.Name}}",
           "--cpus",
-          "4"
+          "1"
         ]
       ],
       "virtualbox_version_file": ".vbox_version",

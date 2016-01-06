@@ -61,8 +61,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Make the project root available to the guest VM.
   # config.vm.synced_folder '.', '/vagrant'
-  config.vm.synced_folder '.', '/vagrant'
-  config.vm.synced_folder '~/vagrantResources/', '/published'
+  # config.vm.synced_folder '~/vagrantResources/', '/published'
 
   # Only provision if explicitly request with 'provision' or 'up --provision'
   if ARGV.any? { |arg| arg =~ /^(--)?provision$/ }

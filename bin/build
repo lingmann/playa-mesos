@@ -6,7 +6,7 @@ function globals(){
   readonly CONF_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
   readonly BUILD_ROOT="${CONF_ROOT}/packer"
   readonly PM_CONFIG="${CONF_ROOT}/config.json"
-  readonly PLATFORM=$(cat "$PM_CONFIG"|python -c 'import json,sys;obj=json.load(sys.stdin);print obj["platform"]')
+  readonly PLATFORM=$(cat "$PM_CONFIG"|python -c 'from __future__ import print_function;import json,sys;obj=json.load(sys.stdin);print(obj["platform"])')
   readonly PACKER_CONFIG="${CONF_ROOT}/packer/packer-${PLATFORM}.json"
 }
 
@@ -17,7 +17,7 @@ function prereqs(){
 }
 
 function remove_box_from_cache(){
-  declare -r box_name=$(cat "$PM_CONFIG"|python -c 'import json,sys;obj=json.load(sys.stdin);print obj["box_name"]')
+  declare -r box_name=$(cat "$PM_CONFIG"|python -c 'from __future__ import print_function;import json,sys;obj=json.load(sys.stdin);print(obj["box_name"])')
   echo "In order to use this box image you must remove any cached instances"
   echo "from Vagrant with:"
   echo "  vagrant box remove ${box_name}"

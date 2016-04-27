@@ -50,7 +50,7 @@ VMware [Fusion](https://www.vmware.com/products/fusion/) or [Workstation](https:
   vagrant up
   ```
 
-1. Connect to the Mesos Web UI on [10.141.141.10:5050](http://10.141.141.10:5050) and the Marathon Web UI on [10.141.141.10:8080](http://10.141.141.10:8080)
+1. Connect to the Mesos Web UI on [10.141.141.10:5050](http://10.141.141.10:5050), the Marathon Web UI on [10.141.141.10:8080](http://10.141.141.10:8080) and the Chronos UI [10.141.141.10:4400](http://10.141.141.10:4400)
 
 1. SSH to the VM
 
